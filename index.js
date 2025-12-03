@@ -53,6 +53,7 @@ function configureProxy(httpProxy) {
 async function getEcrAuthTokenWrapper(authTokenRequest, httpsProxyAgent) {
   const ecrClient = new ECRClient({
     customUserAgent: ECR_LOGIN_GITHUB_ACTION_USER_AGENT,
+    useDualstackEndpoint: true,  // Enable dual-stack endpoints (IPv4 and IPv6)
     requestHandler: new NodeHttpHandler({
       httpAgent: httpsProxyAgent,
       httpsAgent: httpsProxyAgent
